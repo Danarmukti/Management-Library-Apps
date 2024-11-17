@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="461b0474-8bc9-4960-a818-8ab75394870a">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="name" class="java.lang.String"/>
+	<parameter name="tanggal_filter" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     datapeminjaman.`id` AS datapeminjaman_id,
+     datapeminjaman.`judul` AS datapeminjaman_judul,
+     datapeminjaman.`Nama_pengunjung` AS datapeminjaman_Nama_pengunjung,
+     datapeminjaman.`tanggal_pinjam` AS datapeminjaman_tanggal_pinjam,
+     datapeminjaman.`tanggal_pengembalian` AS datapeminjaman_tanggal_pengembalian,
+     datapeminjaman.`tgl_input` AS time
+FROM
+     `datapeminjaman` datapeminjaman
+WHERE
+    (
+         -- Pencarian berdasarkan nama
+         $P{name} = 'Search Peminjaman' 
+         OR Nama_pengunjung LIKE CONCAT('%',$P{name}, '%') 
+     )
+     OR
+         (
+         -- Filter berdasarkan tanggal
+         $P{tanggal_filter} = '-- by tanggal --' 
+         OR 
+         (
+             $P{tanggal_filter} = 'Hari ini' AND DATE(tgl_input) = CURDATE()
+             OR $P{tanggal_filter} = 'Kemarin' AND DATE(tgl_input) = CURDATE() - INTERVAL 1 DAY
+             OR $P{tanggal_filter} = '3 Hari lalu' AND DATE(tgl_input) BETWEEN CURDATE() - INTERVAL 3 DAY AND CURDATE()
+             OR $P{tanggal_filter} = '1 Minggu lalu' AND DATE(tgl_input) BETWEEN CURDATE() - INTERVAL 7 DAY AND CURDATE()
+             OR $P{tanggal_filter} = '1 Bulan lalu' AND DATE(tgl_input) BETWEEN CURDATE() - INTERVAL 1 MONTH AND CURDATE()
+         )
+     );]]>
+	</queryString>
+	<field name="datapeminjaman_id" class="java.lang.Integer"/>
+	<field name="datapeminjaman_judul" class="java.lang.String"/>
+	<field name="datapeminjaman_Nama_pengunjung" class="java.lang.String"/>
+	<field name="datapeminjaman_tanggal_pinjam" class="java.sql.Date"/>
+	<field name="datapeminjaman_tanggal_pengembalian" class="java.sql.Date"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="149" splitType="Stretch">
+			<frame>
+				<reportElement uuid="fb376195-7d86-41a9-9c49-1812d9c55f61" mode="Opaque" x="0" y="0" width="555" height="28" backcolor="#3333FF"/>
+				<staticText>
+					<reportElement uuid="1f4cccc7-0d9f-420f-9301-25e47aa3e4f6" mode="Transparent" x="0" y="0" width="555" height="28" forecolor="#FFFFFF" backcolor="#FFFFFF"/>
+					<textElement>
+						<font size="20"/>
+					</textElement>
+					<text><![CDATA[PERPUSTAKAAN SINAR BANGSA]]></text>
+				</staticText>
+			</frame>
+			<staticText>
+				<reportElement uuid="6b5065a1-6633-4a52-b12f-3a9ac305a41b" x="10" y="109" width="204" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="15"/>
+				</textElement>
+				<text><![CDATA[Laporan Peminjaman Buku]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="eed4f4a0-bcdf-4986-a648-59cfa97b5b2a" x="10" y="129" width="204" height="1"/>
+			</line>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement uuid="e29b5a4c-1737-4c79-b129-75f8bf23c5a8" mode="Opaque" x="0" y="5" width="555" height="20" backcolor="#0000FF"/>
+				<staticText>
+					<reportElement uuid="0b7b04a1-cd5e-406a-bc7c-46c4672a9afd" x="437" y="0" width="118" height="20" forecolor="#FFFFFF"/>
+					<box>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<text><![CDATA[Tanggal Pengembalian]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="6f5d6ce4-945a-4741-92f8-db7d14c992af" x="337" y="0" width="100" height="20" forecolor="#FFFFFF"/>
+					<box>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<text><![CDATA[Tanggal Peminjaman]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="8a31c42f-12cf-44af-8680-7647c8a0e204" x="200" y="0" width="137" height="20" forecolor="#FFFFFF"/>
+					<box>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<text><![CDATA[Nama Peminjam]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="eeb49cb7-3946-445d-9f3a-3495d307227f" x="77" y="0" width="123" height="20" forecolor="#FFFFFF"/>
+					<box>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<text><![CDATA[Judul Buku]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="645a80a9-edfa-4179-96f2-9f1d7cb65fc0" x="0" y="0" width="77" height="20" forecolor="#FFFFFF"/>
+					<box>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<text><![CDATA[No Peminjaman]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement uuid="3866324d-57d1-43a7-9dc1-e63ccf1f6281" x="0" y="0" width="77" height="20"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{datapeminjaman_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="8982b6de-b4c2-4088-b059-fe8e57faff0f" x="77" y="0" width="123" height="20"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{datapeminjaman_judul}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="1c728289-5bfa-4f59-b659-dc3c7805899f" x="200" y="0" width="137" height="20"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{datapeminjaman_Nama_pengunjung}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="f0d8bd5b-6edd-43c8-b610-5118c2c9f6ae" x="337" y="0" width="100" height="20"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{datapeminjaman_tanggal_pinjam}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="154313ed-7a5d-44be-8ce3-f6a50caaa24a" x="437" y="0" width="118" height="20"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{datapeminjaman_tanggal_pengembalian}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="146" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="011b2f7f-19be-4404-8270-b6647123536d" x="427" y="109" width="65" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Arif Basuki]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="c3e5dcaf-c474-49eb-983b-22a21e3d6b15" x="400" y="21" width="46" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Jakarta,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="011b2f7f-19be-4404-8270-b6647123536d" x="390" y="41" width="154" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Kepala Staff Pustakawan]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement uuid="40f96275-e81f-41f8-a493-6edace0df765" x="446" y="21" width="108" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="0216e763-66c2-43fd-99f0-60ca98e92cf1" x="0" y="126" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
