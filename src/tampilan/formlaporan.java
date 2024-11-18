@@ -71,6 +71,10 @@ public class formlaporan extends javax.swing.JPanel {
         pengunjung_btn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         denda_btn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         print_pengunjung.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        print_peminjaman.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        print_pengembalian.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        print_denda.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        
     }
     
     public void printAll(String url) {
@@ -173,6 +177,11 @@ public class formlaporan extends javax.swing.JPanel {
         filterDate.setSelectedIndex(0);
         search_pengunjung.setText("Search Pengunjung");
     }
+    
+    public void resetPengembalian() {
+        filterDatePengembalian.setSelectedIndex(0);
+        search_pengembalian.setText("Search Pengembalian");
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -198,8 +207,7 @@ public class formlaporan extends javax.swing.JPanel {
         btn_panel_pengembalian = new javax.swing.JPanel();
         search_pengembalian = new javax.swing.JTextField();
         print_pengembalian = new custom.CustomRoundedButton();
-        pilih_pengembalian = new javax.swing.JComboBox<>();
-        date_pengembalian = new com.toedter.calendar.JDateChooser();
+        filterDatePengembalian = new javax.swing.JComboBox<>();
         btn_panel_denda = new javax.swing.JPanel();
         search_denda = new javax.swing.JTextField();
         print_denda = new custom.CustomRoundedButton();
@@ -350,7 +358,7 @@ public class formlaporan extends javax.swing.JPanel {
             }
         });
 
-        filterDatePeminjaman.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- by tanggal --", "Hari ini", "Kemarin", "3 Hari lalu", "1 Minggu lalu", "1 Bulang lalu" }));
+        filterDatePeminjaman.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- by tanggal --", "Hari ini", "Kemarin", "3 Hari lalu", "1 Minggu lalu", "1 Bulan lalu" }));
         filterDatePeminjaman.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 filterDatePeminjamanActionPerformed(evt);
@@ -384,6 +392,16 @@ public class formlaporan extends javax.swing.JPanel {
         btn_panel_pengembalian.setBackground(new java.awt.Color(255, 255, 255));
 
         search_pengembalian.setText("Search Pengembalian");
+        search_pengembalian.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                search_pengembalianFocusGained(evt);
+            }
+        });
+        search_pengembalian.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                search_pengembalianKeyTyped(evt);
+            }
+        });
 
         print_pengembalian.setBackground(new java.awt.Color(64, 142, 249));
         print_pengembalian.setForeground(new java.awt.Color(255, 255, 255));
@@ -395,7 +413,12 @@ public class formlaporan extends javax.swing.JPanel {
             }
         });
 
-        pilih_pengembalian.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        filterDatePengembalian.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- by tanggal --", "Hari ini", "Kemarin", "3 Hari lalu", "1 Minggu lalu", "1 Bulan lalu" }));
+        filterDatePengembalian.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                filterDatePengembalianActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout btn_panel_pengembalianLayout = new javax.swing.GroupLayout(btn_panel_pengembalian);
         btn_panel_pengembalian.setLayout(btn_panel_pengembalianLayout);
@@ -403,13 +426,11 @@ public class formlaporan extends javax.swing.JPanel {
             btn_panel_pengembalianLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(btn_panel_pengembalianLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(search_pengembalian, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
+                .addComponent(search_pengembalian, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(print_pengembalian, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
+                .addComponent(print_pengembalian, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pilih_pengembalian, 0, 150, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(date_pengembalian, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+                .addComponent(filterDatePengembalian, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         btn_panel_pengembalianLayout.setVerticalGroup(
@@ -418,8 +439,7 @@ public class formlaporan extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(btn_panel_pengembalianLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(search_pengembalian)
-                    .addComponent(date_pengembalian, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pilih_pengembalian)
+                    .addComponent(filterDatePengembalian)
                     .addComponent(print_pengembalian, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -741,7 +761,8 @@ public class formlaporan extends javax.swing.JPanel {
 
     private void pengunjung_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pengunjung_btnActionPerformed
         // TODO add your handling code here:
-       Object[] Baris ={"ID Pengunjung","Nama Pengunjung","Alamat","Usia","Kategori Usia","No Telepon","Tanggal Input"};
+        Object[] Baris ={"ID Pengunjung","Nama Pengunjung","Usia","Kategori Usia",
+            "Alamat","No Telepon","Tanggal Input"};
         tabmode = new DefaultTableModel(null, Baris);
         table_pengunjung.setModel(tabmode);  
         String sql = "select * from datapengunjung";
@@ -826,7 +847,7 @@ public class formlaporan extends javax.swing.JPanel {
 
     private void pengembalian_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pengembalian_btnActionPerformed
         // TODO add your handling code here:
-        Object[] Baris ={"ID peminjman",
+        Object[] Baris ={"ID peminjaman",
                         "Nama Pengunjung",
                         "Judul Buku",
                         "Tanggal peminjaman",
@@ -967,7 +988,23 @@ public class formlaporan extends javax.swing.JPanel {
     
     private void print_pengembalianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_print_pengembalianActionPerformed
         // TODO add your handling code here:
+        String tgl = "-- by tanggal --";
         
+        String url = "src/lapor/reportpengembalian/reportpengembalian.jrxml";
+//        String urlDate = "src/lapor/reportpengunjung/reportpeng-date.jrxml";
+        
+            if (filterDatePengembalian.getSelectedItem().toString() != tgl  ) 
+                {
+                    printByDate(filterDatePengembalian.getSelectedItem().toString(), url);
+                } 
+            else if  ( (!search_pengembalian.equals("Search Pengembalian") && !search_pengembalian.equals("") ))
+                {
+                    printByFilter(null, search_pengembalian.getText(),"name",url);
+                }
+            else  {
+                printAll(url); 
+            }
+        resetPengembalian();  
     }//GEN-LAST:event_print_pengembalianActionPerformed
 
     private void print_dendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_print_dendaActionPerformed
@@ -982,8 +1019,8 @@ public class formlaporan extends javax.swing.JPanel {
 
     private void search_pengunjungKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_search_pengunjungKeyTyped
         // TODO add your handling code here:
-        Object[] Baris ={"ID Pengunjung","Nama Pengunjung","Alamat","Usia",
-            "Kategori Usia","No Telepon","Tanggal Input"};
+        Object[] Baris ={"ID Pengunjung","Nama Pengunjung","Usia","Kategori Usia",
+            "Alamat","No Telepon","Tanggal Input"};
         
         tabmode = new DefaultTableModel(null, Baris);
         table_pengunjung.setModel(tabmode); 
@@ -1274,6 +1311,109 @@ public class formlaporan extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_search_peminjamanActionPerformed
 
+    private void search_pengembalianFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_search_pengembalianFocusGained
+        // TODO add your handling code here:
+        search_pengembalian.setText("");
+    }//GEN-LAST:event_search_pengembalianFocusGained
+
+    private void filterDatePengembalianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filterDatePengembalianActionPerformed
+        // TODO add your handling code here:
+        String choose = "-- by tanggal --";
+        
+        if ( (filterDatePengembalian.getSelectedItem().toString() == choose)) {
+            Object[] Baris ={"ID peminjaman",
+                        "Nama Pengunjung",
+                        "Judul Buku",
+                        "Tanggal peminjaman",
+                        "Tanggal pengembalian"};
+            tabmode = new DefaultTableModel(null, Baris);
+            table_pengembalian.setModel(tabmode);
+            String sql = "select * from datapengembalian";
+            try {
+            java.sql.Statement stat = conn.createStatement();
+            ResultSet hasil = stat.executeQuery(sql);
+                while(hasil.next()){
+                    String a = hasil.getString("id_peminjaman");
+                    String b = hasil.getString("nama_pengunjung");
+                    String c = hasil.getString("judul_buku");
+                    String d = hasil.getString("tanggal_peminjaman");
+                    String e = hasil.getString("tanggal_pengembaliann");
+
+
+
+                    String[] data={a,b,c,d,e};
+                    tabmode.addRow(data);
+                }
+            } catch (Exception e){
+            }
+        } else if (filterDatePeminjaman.getSelectedItem().toString() != choose) {
+            Object[] Baris ={"ID peminjaman",
+                        "Nama Pengunjung",
+                        "Judul Buku",
+                        "Tanggal peminjaman",
+                        "Tanggal pengembalian"};
+            tabmode = new DefaultTableModel(null, Baris);
+            table_pengembalian.setModel(tabmode);
+            String sql="";
+            if (filterDatePengembalian.getSelectedItem().toString()=="Hari ini") {
+                sql = "select * from datapengembalian WHERE DATE(tgl_input) = CURDATE()";
+            } else if (filterDatePengembalian.getSelectedItem().toString()=="Kemarin") {
+                sql = "select * from datapengembalian WHERE DATE(tgl_input) BETWEEN CURDATE() - INTERVAL 1 DAY AND CURDATE();";
+            } else if (filterDatePengembalian.getSelectedItem().toString()=="3 Hari lalu") {
+                sql = "select * from datapengembalian WHERE DATE(tgl_input) BETWEEN CURDATE() - INTERVAL 3 DAY AND CURDATE();";
+            } else if (filterDatePengembalian.getSelectedItem().toString()=="1 Minggu lalu") {
+                sql = "select * from datapengembalian WHERE DATE(tgl_input) BETWEEN CURDATE() - INTERVAL 7 DAY AND CURDATE();";
+            } else if (filterDatePengembalian.getSelectedItem().toString()=="1 Bulan lalu") {
+                sql = "select * from datapengembalian WHERE DATE(tgl_input) BETWEEN CURDATE() - INTERVAL 1 MONTH AND CURDATE();";
+            }
+            try {
+                java.sql.Statement stat = conn.createStatement();
+                ResultSet hasil = stat.executeQuery(sql);
+                while(hasil.next()){
+                    
+                String a = hasil.getString("id_peminjaman");
+                String b = hasil.getString("nama_pengunjung");
+                String c = hasil.getString("judul_buku");
+                String d = hasil.getString("tanggal_peminjaman");
+                String e = hasil.getString("tanggal_pengembaliann");
+             
+                
+                
+                String[] data={a,b,c,d,e};
+                tabmode.addRow(data);
+                }
+            } catch (Exception e){
+            }
+        }
+    }//GEN-LAST:event_filterDatePengembalianActionPerformed
+
+    private void search_pengembalianKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_search_pengembalianKeyTyped
+        // TODO add your handling code here:
+       Object[] Baris ={"ID peminjaman",
+                        "Nama Pengunjung",
+                        "Judul Buku",
+                        "Tanggal peminjaman",
+                        "Tanggal pengembalian"};
+            tabmode = new DefaultTableModel(null, Baris);
+            table_pengembalian.setModel(tabmode);
+        String sql = "select * from datapengembalian WHERE nama_pengunjung LIKE '%"+
+                search_pengembalian.getText()+"%';";
+        try {
+            java.sql.Statement stat = conn.createStatement();
+            ResultSet hasil = stat.executeQuery(sql);
+            while(hasil.next()){
+                 String a = hasil.getString("id_peminjaman");
+                String b = hasil.getString("nama_pengunjung");
+                String c = hasil.getString("judul_buku");
+                String d = hasil.getString("tanggal_peminjaman");
+                String e = hasil.getString("tanggal_pengembaliann");
+                
+                String[] data={a,b,c,d,e};
+                tabmode.addRow(data);
+            }
+        } catch (Exception e){
+        }
+    }//GEN-LAST:event_search_pengembalianKeyTyped
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel btn_panel;
@@ -1282,10 +1422,10 @@ public class formlaporan extends javax.swing.JPanel {
     private javax.swing.JPanel btn_panel_pengembalian;
     private javax.swing.JPanel btn_panel_pengunjung;
     private com.toedter.calendar.JDateChooser date_denda;
-    private com.toedter.calendar.JDateChooser date_pengembalian;
     private custom.CustomRoundedButton denda_btn;
     private javax.swing.JComboBox<String> filterDate;
     private javax.swing.JComboBox<String> filterDatePeminjaman;
+    private javax.swing.JComboBox<String> filterDatePengembalian;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -1295,7 +1435,6 @@ public class formlaporan extends javax.swing.JPanel {
     private custom.CustomRoundedButton pengembalian_btn;
     private custom.CustomRoundedButton pengunjung_btn;
     private javax.swing.JComboBox<String> pilih_denda;
-    private javax.swing.JComboBox<String> pilih_pengembalian;
     private javax.swing.JComboBox<String> pilih_pengunjung;
     private custom.CustomRoundedButton print_denda;
     private custom.CustomRoundedButton print_peminjaman;

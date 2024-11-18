@@ -1,27 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="461b0474-8bc9-4960-a818-8ab75394870a">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="84cc1a03-7068-4a86-b240-741479349a87">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
+	<parameter name="tanggal_filter" class="java.lang.String"/>
 	<parameter name="name" class="java.lang.String"/>
-	<parameter name="tanggal_filter" class="java.lang.String">
-		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
-	</parameter>
 	<queryString>
 		<![CDATA[SELECT
-     datapeminjaman.`id` AS datapeminjaman_id,
-     datapeminjaman.`judul` AS datapeminjaman_judul,
-     datapeminjaman.`Nama_pengunjung` AS datapeminjaman_Nama_pengunjung,
-     datapeminjaman.`tanggal_pinjam` AS datapeminjaman_tanggal_pinjam,
-     datapeminjaman.`tanggal_pengembalian` AS datapeminjaman_tanggal_pengembalian,
-     datapeminjaman.`tgl_input` AS time
+     datapengembalian.`id_peminjaman` AS datapengembalian_id_peminjaman,
+     datapengembalian.`nama_pengunjung` AS datapengembalian_nama_pengunjung,
+     datapengembalian.`judul_buku` AS datapengembalian_judul_buku,
+     datapengembalian.`tanggal_peminjaman` AS datapengembalian_tanggal_peminjaman,
+     datapengembalian.`tanggal_pengembaliann` AS datapengembalian_tanggal_pengembaliann
+     
 FROM
-     `datapeminjaman` datapeminjaman
+     `datapengembalian` datapengembalian
 WHERE
     (
          -- Pencarian berdasarkan nama
-         $P{name} = 'Search Peminjaman' 
-         OR Nama_pengunjung LIKE CONCAT('%',$P{name}, '%') 
+         $P{name} = 'Search Pengembalian' 
+         OR nama_pengunjung LIKE CONCAT('%',$P{name}, '%') 
      )
      OR
          (
@@ -37,19 +35,18 @@ WHERE
          )
      );]]>
 	</queryString>
-	<field name="datapeminjaman_id" class="java.lang.Integer"/>
-	<field name="datapeminjaman_judul" class="java.lang.String"/>
-	<field name="datapeminjaman_Nama_pengunjung" class="java.lang.String"/>
-	<field name="datapeminjaman_tanggal_pinjam" class="java.sql.Date"/>
-	<field name="datapeminjaman_tanggal_pengembalian" class="java.sql.Date"/>
-	<field name="time" class="java.sql.Timestamp"/>
+	<field name="datapengembalian_id_peminjaman" class="java.lang.String"/>
+	<field name="datapengembalian_nama_pengunjung" class="java.lang.String"/>
+	<field name="datapengembalian_judul_buku" class="java.lang.String"/>
+	<field name="datapengembalian_tanggal_peminjaman" class="java.sql.Date"/>
+	<field name="datapengembalian_tanggal_pengembaliann" class="java.sql.Date"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="149" splitType="Stretch">
+		<band height="127" splitType="Stretch">
 			<frame>
-				<reportElement uuid="fb376195-7d86-41a9-9c49-1812d9c55f61" mode="Opaque" x="0" y="0" width="555" height="28" backcolor="#3333FF"/>
+				<reportElement uuid="fb376195-7d86-41a9-9c49-1812d9c55f61" mode="Opaque" x="-1" y="1" width="555" height="28" backcolor="#3333FF"/>
 				<staticText>
 					<reportElement uuid="1f4cccc7-0d9f-420f-9301-25e47aa3e4f6" mode="Transparent" x="0" y="0" width="555" height="28" forecolor="#FFFFFF" backcolor="#FFFFFF"/>
 					<textElement>
@@ -59,23 +56,23 @@ WHERE
 				</staticText>
 			</frame>
 			<staticText>
-				<reportElement uuid="6b5065a1-6633-4a52-b12f-3a9ac305a41b" x="10" y="109" width="204" height="20"/>
+				<reportElement uuid="b38931b3-e373-4c35-82be-ca149fd21c6f" x="7" y="95" width="220" height="20"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="15"/>
 				</textElement>
-				<text><![CDATA[Laporan Peminjaman Buku]]></text>
+				<text><![CDATA[Laporan Pengembalian Buku]]></text>
 			</staticText>
 			<line>
-				<reportElement uuid="eed4f4a0-bcdf-4986-a648-59cfa97b5b2a" x="10" y="129" width="204" height="1"/>
+				<reportElement uuid="a3d62185-353e-4f1b-a6c3-2205c7fb8202" x="10" y="115" width="217" height="1"/>
 			</line>
 		</band>
 	</title>
 	<columnHeader>
-		<band height="25" splitType="Stretch">
+		<band height="21" splitType="Stretch">
 			<frame>
-				<reportElement uuid="e29b5a4c-1737-4c79-b129-75f8bf23c5a8" mode="Opaque" x="0" y="5" width="555" height="20" backcolor="#0000FF"/>
+				<reportElement uuid="406beec0-3587-4b16-a282-9666a9aa8f40" mode="Opaque" x="0" y="1" width="554" height="20" backcolor="#0000FF"/>
 				<staticText>
-					<reportElement uuid="0b7b04a1-cd5e-406a-bc7c-46c4672a9afd" x="437" y="0" width="118" height="20" forecolor="#FFFFFF"/>
+					<reportElement uuid="290b9b13-431b-479b-b979-608b6796be07" x="0" y="0" width="100" height="20" forecolor="#FFFFFF"/>
 					<box>
 						<pen lineWidth="1.0"/>
 						<topPen lineWidth="1.0"/>
@@ -84,34 +81,10 @@ WHERE
 						<rightPen lineWidth="1.0"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle"/>
-					<text><![CDATA[Tanggal Pengembalian]]></text>
+					<text><![CDATA[No Pengembalian]]></text>
 				</staticText>
 				<staticText>
-					<reportElement uuid="6f5d6ce4-945a-4741-92f8-db7d14c992af" x="337" y="0" width="100" height="20" forecolor="#FFFFFF"/>
-					<box>
-						<pen lineWidth="1.0"/>
-						<topPen lineWidth="1.0"/>
-						<leftPen lineWidth="1.0"/>
-						<bottomPen lineWidth="1.0"/>
-						<rightPen lineWidth="1.0"/>
-					</box>
-					<textElement textAlignment="Center" verticalAlignment="Middle"/>
-					<text><![CDATA[Tanggal Peminjaman]]></text>
-				</staticText>
-				<staticText>
-					<reportElement uuid="8a31c42f-12cf-44af-8680-7647c8a0e204" x="200" y="0" width="137" height="20" forecolor="#FFFFFF"/>
-					<box>
-						<pen lineWidth="1.0"/>
-						<topPen lineWidth="1.0"/>
-						<leftPen lineWidth="1.0"/>
-						<bottomPen lineWidth="1.0"/>
-						<rightPen lineWidth="1.0"/>
-					</box>
-					<textElement textAlignment="Center" verticalAlignment="Middle"/>
-					<text><![CDATA[Nama Peminjam]]></text>
-				</staticText>
-				<staticText>
-					<reportElement uuid="eeb49cb7-3946-445d-9f3a-3495d307227f" x="77" y="0" width="123" height="20" forecolor="#FFFFFF"/>
+					<reportElement uuid="dc94aae6-a545-4db9-9f65-d23220afa276" x="227" y="0" width="115" height="20" forecolor="#FFFFFF"/>
 					<box>
 						<pen lineWidth="1.0"/>
 						<topPen lineWidth="1.0"/>
@@ -123,7 +96,7 @@ WHERE
 					<text><![CDATA[Judul Buku]]></text>
 				</staticText>
 				<staticText>
-					<reportElement uuid="645a80a9-edfa-4179-96f2-9f1d7cb65fc0" x="0" y="0" width="77" height="20" forecolor="#FFFFFF"/>
+					<reportElement uuid="448d7c95-ee81-47c7-a969-e733e7e0e478" x="342" y="0" width="100" height="20" forecolor="#FFFFFF"/>
 					<box>
 						<pen lineWidth="1.0"/>
 						<topPen lineWidth="1.0"/>
@@ -132,15 +105,32 @@ WHERE
 						<rightPen lineWidth="1.0"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle"/>
-					<text><![CDATA[No Peminjaman]]></text>
+					<text><![CDATA[Tanggal Peminjaman]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="61ec457f-0c0b-44bb-a336-0739c0a3b811" x="442" y="0" width="112" height="20" forecolor="#FFFFFF"/>
+					<box>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<text><![CDATA[Tanggal pengembalian]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="f63ba02b-092d-4503-87cb-44db7eee549b" x="100" y="0" width="127" height="20" forecolor="#FFFFFF"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<text><![CDATA[Nama Pengembali]]></text>
 				</staticText>
 			</frame>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="20" splitType="Stretch">
+		<band height="21" splitType="Stretch">
 			<textField>
-				<reportElement uuid="3866324d-57d1-43a7-9dc1-e63ccf1f6281" x="0" y="0" width="77" height="20"/>
+				<reportElement uuid="53a3b3fc-755a-4c18-b7b6-f9bdc0e0a5ea" x="0" y="0" width="100" height="20"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -149,10 +139,10 @@ WHERE
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{datapeminjaman_id}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{datapengembalian_id_peminjaman}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="8982b6de-b4c2-4088-b059-fe8e57faff0f" x="77" y="0" width="123" height="20"/>
+				<reportElement uuid="bf8df8df-d527-473d-a492-6764d8d75606" x="228" y="0" width="115" height="20"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -161,10 +151,10 @@ WHERE
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{datapeminjaman_judul}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{datapengembalian_judul_buku}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="1c728289-5bfa-4f59-b659-dc3c7805899f" x="200" y="0" width="137" height="20"/>
+				<reportElement uuid="8d8b5c5b-7f19-4c6c-bdc6-8a80fbd96d3a" x="343" y="0" width="100" height="20"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -173,10 +163,10 @@ WHERE
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{datapeminjaman_Nama_pengunjung}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{datapengembalian_tanggal_peminjaman}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="f0d8bd5b-6edd-43c8-b610-5118c2c9f6ae" x="337" y="0" width="100" height="20"/>
+				<reportElement uuid="4c64ed5a-2fb6-4114-8f07-26dc3361a7a6" x="443" y="0" width="112" height="20"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -185,10 +175,10 @@ WHERE
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{datapeminjaman_tanggal_pinjam}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{datapengembalian_tanggal_pengembaliann}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="154313ed-7a5d-44be-8ce3-f6a50caaa24a" x="437" y="0" width="118" height="20"/>
+				<reportElement uuid="bee5878a-d7ce-4fa7-b626-1e19d897b0f0" x="100" y="0" width="128" height="20"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -197,42 +187,42 @@ WHERE
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{datapeminjaman_tanggal_pengembalian}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{datapengembalian_nama_pengunjung}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
 	<pageFooter>
-		<band height="146" splitType="Stretch">
+		<band height="142" splitType="Stretch">
 			<staticText>
-				<reportElement uuid="011b2f7f-19be-4404-8270-b6647123536d" x="427" y="109" width="65" height="20"/>
-				<textElement>
-					<font size="12"/>
-				</textElement>
-				<text><![CDATA[Arif Basuki]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="c3e5dcaf-c474-49eb-983b-22a21e3d6b15" x="400" y="21" width="46" height="20"/>
+				<reportElement uuid="c3e5dcaf-c474-49eb-983b-22a21e3d6b15" x="400" y="16" width="46" height="20"/>
 				<textElement>
 					<font size="12"/>
 				</textElement>
 				<text><![CDATA[Jakarta,]]></text>
 			</staticText>
-			<staticText>
-				<reportElement uuid="011b2f7f-19be-4404-8270-b6647123536d" x="390" y="41" width="154" height="20"/>
-				<textElement>
-					<font size="12"/>
-				</textElement>
-				<text><![CDATA[Kepala Staff Pustakawan]]></text>
-			</staticText>
 			<textField pattern="dd/MM/yyyy">
-				<reportElement uuid="40f96275-e81f-41f8-a493-6edace0df765" x="446" y="21" width="108" height="20"/>
+				<reportElement uuid="40f96275-e81f-41f8-a493-6edace0df765" x="446" y="16" width="108" height="20"/>
 				<textElement>
 					<font size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
+			<staticText>
+				<reportElement uuid="011b2f7f-19be-4404-8270-b6647123536d" x="390" y="36" width="154" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Kepala Staff Pustakawan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="011b2f7f-19be-4404-8270-b6647123536d" x="427" y="104" width="65" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Arif Basuki]]></text>
+			</staticText>
 			<textField>
-				<reportElement uuid="0216e763-66c2-43fd-99f0-60ca98e92cf1" x="0" y="126" width="100" height="20"/>
+				<reportElement uuid="326a5911-3565-4c9c-b0f4-620ed2b5ff13" x="61" y="107" width="100" height="20"/>
 				<textElement/>
 				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>

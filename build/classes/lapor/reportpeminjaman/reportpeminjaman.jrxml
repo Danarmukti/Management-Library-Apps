@@ -30,7 +30,7 @@ WHERE
          OR 
          (
              $P{tanggal_filter} = 'Hari ini' AND DATE(tgl_input) = CURDATE()
-             OR $P{tanggal_filter} = 'Kemarin' AND DATE(tgl_input) = CURDATE() - INTERVAL 1 DAY
+             OR $P{tanggal_filter} = 'Kemarin' AND DATE(tgl_input) BETWEEN CURDATE() - INTERVAL 1 DAY AND CURDATE()
              OR $P{tanggal_filter} = '3 Hari lalu' AND DATE(tgl_input) BETWEEN CURDATE() - INTERVAL 3 DAY AND CURDATE()
              OR $P{tanggal_filter} = '1 Minggu lalu' AND DATE(tgl_input) BETWEEN CURDATE() - INTERVAL 7 DAY AND CURDATE()
              OR $P{tanggal_filter} = '1 Bulan lalu' AND DATE(tgl_input) BETWEEN CURDATE() - INTERVAL 1 MONTH AND CURDATE()
@@ -42,6 +42,7 @@ WHERE
 	<field name="datapeminjaman_Nama_pengunjung" class="java.lang.String"/>
 	<field name="datapeminjaman_tanggal_pinjam" class="java.sql.Date"/>
 	<field name="datapeminjaman_tanggal_pengembalian" class="java.sql.Date"/>
+	<field name="time" class="java.sql.Timestamp"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>

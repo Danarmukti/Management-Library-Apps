@@ -368,7 +368,7 @@
                             <StringItem index="2" value="Kemarin"/>
                             <StringItem index="3" value="3 Hari lalu"/>
                             <StringItem index="4" value="1 Minggu lalu"/>
-                            <StringItem index="5" value="1 Bulang lalu"/>
+                            <StringItem index="5" value="1 Bulan lalu"/>
                           </StringArray>
                         </Property>
                       </Properties>
@@ -393,14 +393,12 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" max="-2" attributes="0"/>
-                              <Component id="search_pengembalian" pref="193" max="32767" attributes="0"/>
+                              <Component id="search_pengembalian" pref="195" max="32767" attributes="0"/>
                               <EmptySpace min="-2" max="-2" attributes="0"/>
-                              <Component id="print_pengembalian" pref="139" max="32767" attributes="0"/>
-                              <EmptySpace min="-2" max="-2" attributes="0"/>
-                              <Component id="pilih_pengembalian" pref="150" max="32767" attributes="0"/>
-                              <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
-                              <Component id="date_pengembalian" pref="140" max="32767" attributes="0"/>
-                              <EmptySpace min="-2" max="-2" attributes="0"/>
+                              <Component id="print_pengembalian" pref="141" max="32767" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="filterDatePengembalian" min="-2" pref="296" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -410,8 +408,7 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="search_pengembalian" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="date_pengembalian" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="pilih_pengembalian" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="filterDatePengembalian" alignment="0" max="32767" attributes="0"/>
                                   <Component id="print_pengembalian" alignment="0" min="-2" pref="33" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="32767" attributes="0"/>
@@ -424,6 +421,10 @@
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Search Pengembalian"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="search_pengembalianFocusGained"/>
+                        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="search_pengembalianKeyTyped"/>
+                      </Events>
                     </Component>
                     <Component class="custom.CustomRoundedButton" name="print_pengembalian">
                       <Properties>
@@ -442,22 +443,25 @@
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="print_pengembalianActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JComboBox" name="pilih_pengembalian">
+                    <Component class="javax.swing.JComboBox" name="filterDatePengembalian">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="4">
-                            <StringItem index="0" value="Item 1"/>
-                            <StringItem index="1" value="Item 2"/>
-                            <StringItem index="2" value="Item 3"/>
-                            <StringItem index="3" value="Item 4"/>
+                          <StringArray count="6">
+                            <StringItem index="0" value="-- by tanggal --"/>
+                            <StringItem index="1" value="Hari ini"/>
+                            <StringItem index="2" value="Kemarin"/>
+                            <StringItem index="3" value="3 Hari lalu"/>
+                            <StringItem index="4" value="1 Minggu lalu"/>
+                            <StringItem index="5" value="1 Bulan lalu"/>
                           </StringArray>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="filterDatePengembalianActionPerformed"/>
+                      </Events>
                       <AuxValues>
                         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                       </AuxValues>
-                    </Component>
-                    <Component class="com.toedter.calendar.JDateChooser" name="date_pengembalian">
                     </Component>
                   </SubComponents>
                 </Container>

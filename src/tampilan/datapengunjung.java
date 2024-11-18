@@ -67,7 +67,6 @@ public class datapengunjung extends javax.swing.JPanel {
         
         // hover to btn changes cursor pointer into hand cursor
         searchbtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        searchpanel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         editbtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         addbtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         deletebtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -76,21 +75,25 @@ public class datapengunjung extends javax.swing.JPanel {
     }
     
     protected void dataPengunjung() {
-        Object[] Baris ={"ID Pengunjung","Nama Pengunjung","Alamat","No Telepon"};
+           Object[] Baris ={"ID Pengunjung","Nama Pengunjung","Usia","Kategori Usia",
+            "Alamat","No Telepon","Tanggal Input"};
         tabmode = new DefaultTableModel(null, Baris);
         tabelpengunjung.setModel(tabmode);
         String sql = "select * from datapengunjung";
         try {
             java.sql.Statement stat = conn.createStatement();
-            ResultSet hasil = stat.executeQuery(sql);
-            while(hasil.next()) {
-                String a = hasil.getString("id");
-                String b = hasil.getString("nama");
-                String c = hasil.getString("alamat");
-                String d = hasil.getString("phone");
-            
-                String[] data={a,b,c,d};
-                tabmode.addRow(data);
+                ResultSet hasil = stat.executeQuery(sql);
+                while(hasil.next()) {
+                    String a = hasil.getString("id");
+                    String b = hasil.getString("nama");
+                    String c = hasil.getString("usia");
+                    String d = hasil.getString("category_age");
+                    String e = hasil.getString("alamat");
+                    String f = hasil.getString("phone");
+                    String g = hasil.getString("tanggal");
+
+                    String[] data={a,b,c,d,e,f,g};
+                    tabmode.addRow(data);
             }
         } catch (Exception e) {
         }

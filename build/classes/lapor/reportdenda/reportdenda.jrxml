@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="cd2706cb-cb3e-4df3-b334-28489cd31617">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     datadenda.`id_denda` AS datadenda_id_denda,
+     datadenda.`nama_pengunjung` AS datadenda_nama_pengunjung,
+     datadenda.`nama_pegawai` AS datadenda_nama_pegawai,
+     datadenda.`tgl_pengembalian` AS datadenda_tgl_pengembalian,
+     datadenda.`telat_pengembalian` AS datadenda_telat_pengembalian,
+     datadenda.`harga_denda` AS datadenda_harga_denda,
+     datadenda.`judul_buku` AS datadenda_judul_buku,
+     datadenda.`tglpinjam_sblmnya` AS datadenda_tglpinjam_sblmnya,
+     datadenda.`tglkembali_sblmnya` AS datadenda_tglkembali_sblmnya
+FROM
+     `datadenda` datadenda]]>
+	</queryString>
+	<field name="datadenda_id_denda" class="java.lang.Integer"/>
+	<field name="datadenda_nama_pengunjung" class="java.lang.String"/>
+	<field name="datadenda_nama_pegawai" class="java.lang.String"/>
+	<field name="datadenda_tgl_pengembalian" class="java.sql.Date"/>
+	<field name="datadenda_telat_pengembalian" class="java.lang.String"/>
+	<field name="datadenda_harga_denda" class="java.lang.String"/>
+	<field name="datadenda_judul_buku" class="java.lang.String"/>
+	<field name="datadenda_tglpinjam_sblmnya" class="java.sql.Date"/>
+	<field name="datadenda_tglkembali_sblmnya" class="java.sql.Date"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="118" splitType="Stretch">
+			<frame>
+				<reportElement uuid="fb376195-7d86-41a9-9c49-1812d9c55f61" mode="Opaque" x="0" y="0" width="802" height="28" backcolor="#3333FF"/>
+				<staticText>
+					<reportElement uuid="1f4cccc7-0d9f-420f-9301-25e47aa3e4f6" mode="Transparent" x="0" y="0" width="555" height="28" forecolor="#FFFFFF" backcolor="#FFFFFF"/>
+					<textElement>
+						<font size="20"/>
+					</textElement>
+					<text><![CDATA[PERPUSTAKAAN SINAR BANGSA]]></text>
+				</staticText>
+			</frame>
+			<staticText>
+				<reportElement uuid="04d7cdb9-b883-4741-b6e9-a32d89f11de9" x="0" y="85" width="100" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Laporan Denda]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="ce24e674-8211-4d3e-8b9a-43007860291c" x="0" y="105" width="100" height="1"/>
+			</line>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="24" splitType="Stretch">
+			<frame>
+				<reportElement uuid="f1a59290-95e6-48e4-8fe3-405daa99c6a4" mode="Opaque" x="0" y="5" width="802" height="20" backcolor="#0000FF"/>
+				<staticText>
+					<reportElement uuid="e28b4930-4ef6-4a6b-9c30-980cee4d9a89" x="721" y="0" width="81" height="20" forecolor="#FFFFFF"/>
+					<box>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<text><![CDATA[Harga Denda]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="65f8d50b-08a7-4bc9-8854-12d9e6573a4b" x="648" y="0" width="73" height="20" forecolor="#FFFFFF"/>
+					<box>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<text><![CDATA[Hari Terlambat]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="f7e8bd09-a27f-4e6d-9686-95f84646b817" x="414" y="0" width="100" height="20" forecolor="#FFFFFF"/>
+					<box>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<text><![CDATA[Tanggal kembali]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="cea24f7d-2ec3-40aa-898d-44ae349195dc" x="514" y="0" width="134" height="20" forecolor="#FFFFFF"/>
+					<box>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<text><![CDATA[Tanggal kembali sebenarnya]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="c7a30457-c2fd-4800-8509-5834dc2aef18" x="287" y="0" width="127" height="20" forecolor="#FFFFFF"/>
+					<box>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<text><![CDATA[Judul Buku]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="2dda7f75-a59b-477a-ab56-dababf733708" x="162" y="0" width="125" height="20" forecolor="#FFFFFF"/>
+					<box>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<text><![CDATA[Nama Pegawai]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="1d344460-4089-44ed-9994-9263b2fb0f1f" x="21" y="0" width="141" height="20" forecolor="#FFFFFF"/>
+					<box>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<text><![CDATA[Nama Pengunjung]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="1ac9099e-5970-4db3-bc0b-894470422c9c" x="0" y="0" width="21" height="20" forecolor="#FFFFFF"/>
+					<box>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<text><![CDATA[No]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement uuid="76cdf8d8-2863-4bb6-b588-3837d52f35e6" x="0" y="0" width="21" height="20"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{datadenda_id_denda}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="a9a50006-e08b-4807-86b0-431103d323b4" x="21" y="0" width="141" height="20"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[[$F{Nama Pengunjung}]]]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="8b80e05b-be09-4edc-b1af-2662b559a03b" x="162" y="0" width="125" height="20"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[[$F{Nama Pegawai}]]]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="6345d589-68b4-4ac3-87bd-3a1139785058" x="514" y="0" width="134" height="20"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[[$F{Tanggal kembali sebenarnya}]]]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="44773d05-5002-4be6-8207-0f25536eaaa4" x="648" y="0" width="73" height="20"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[[$F{Hari Terlambat}]]]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="0270153e-4dfd-4bea-9615-7cda1bfb2c8e" x="287" y="0" width="127" height="20"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[[$F{Judul Buku}]]]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="028ac8a6-f3cb-469e-9f8e-21cff8b5ecf2" x="721" y="0" width="81" height="20"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[[$F{Harga Denda}]]]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="d9a20640-f4f8-4ef3-8a84-68e78c68b094" x="414" y="0" width="100" height="20"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[[$F{Tanggal kembali}]]]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="121" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="011b2f7f-19be-4404-8270-b6647123536d" x="635" y="29" width="154" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Kepala Staff Pustakawan]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement uuid="40f96275-e81f-41f8-a493-6edace0df765" x="691" y="9" width="108" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="c3e5dcaf-c474-49eb-983b-22a21e3d6b15" x="645" y="9" width="46" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Jakarta,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="011b2f7f-19be-4404-8270-b6647123536d" x="676" y="88" width="65" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Arif Basuki]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="a995af33-59b7-44f9-a422-93e6e69ddad4" x="0" y="101" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

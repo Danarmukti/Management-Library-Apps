@@ -34,14 +34,16 @@ public class formdatapengunjung extends javax.swing.JPanel {
     protected void aktif() {
         namafield.setEnabled(true);
         alamatfield.setEnabled(true);
-        telpfield.setEnabled(true);
+        ufield.setEnabled(true);
         namafield.requestFocus();
     }
     
     protected void kosong(){
         namafield.setText("");
         alamatfield.setText("");
-        telpfield.setText("");
+        category.setText("");
+        ufield.setText("");
+        telp.setText("");
     }
 
    
@@ -58,16 +60,16 @@ public class formdatapengunjung extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         namafield = new custom.CustomRoundedTextField();
-        telpfield = new custom.CustomRoundedTextField();
+        ufield = new custom.CustomRoundedTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         alamatfield = new custom.CustomRoundedTextArea();
         simpanbtn = new custom.CustomRoundedButton();
         clearbtn = new custom.CustomRoundedButton();
         backbtn = new custom.CustomRoundedButton();
         jLabel5 = new javax.swing.JLabel();
-        telpfield1 = new custom.CustomRoundedTextField();
+        category = new custom.CustomRoundedTextField();
         jLabel6 = new javax.swing.JLabel();
-        telpfield2 = new custom.CustomRoundedTextField();
+        telp = new custom.CustomRoundedTextField();
 
         mainpanel.setBackground(new java.awt.Color(255, 255, 255));
         mainpanel.setLayout(new java.awt.BorderLayout());
@@ -120,10 +122,10 @@ public class formdatapengunjung extends javax.swing.JPanel {
             }
         });
 
-        telpfield.setFocusedBorderColor(new java.awt.Color(23, 48, 82));
-        telpfield.addKeyListener(new java.awt.event.KeyAdapter() {
+        ufield.setFocusedBorderColor(new java.awt.Color(23, 48, 82));
+        ufield.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                telpfieldKeyTyped(evt);
+                ufieldKeyTyped(evt);
             }
         });
 
@@ -174,10 +176,10 @@ public class formdatapengunjung extends javax.swing.JPanel {
         jLabel5.setForeground(new java.awt.Color(23, 48, 82));
         jLabel5.setText("Kategori");
 
-        telpfield1.setFocusedBorderColor(new java.awt.Color(23, 48, 82));
-        telpfield1.addKeyListener(new java.awt.event.KeyAdapter() {
+        category.setFocusedBorderColor(new java.awt.Color(23, 48, 82));
+        category.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                telpfield1KeyTyped(evt);
+                categoryKeyTyped(evt);
             }
         });
 
@@ -185,10 +187,10 @@ public class formdatapengunjung extends javax.swing.JPanel {
         jLabel6.setForeground(new java.awt.Color(23, 48, 82));
         jLabel6.setText("No Telpon");
 
-        telpfield2.setFocusedBorderColor(new java.awt.Color(23, 48, 82));
-        telpfield2.addKeyListener(new java.awt.event.KeyAdapter() {
+        telp.setFocusedBorderColor(new java.awt.Color(23, 48, 82));
+        telp.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                telpfield2KeyTyped(evt);
+                telpKeyTyped(evt);
             }
         });
 
@@ -209,10 +211,10 @@ public class formdatapengunjung extends javax.swing.JPanel {
                         .addGap(47, 47, 47)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(namafield, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(telpfield, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(ufield, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 393, Short.MAX_VALUE)
-                            .addComponent(telpfield1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(telpfield2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(category, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(telp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(simpanbtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -232,15 +234,15 @@ public class formdatapengunjung extends javax.swing.JPanel {
                 .addGap(41, 41, 41)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
-                    .addComponent(telpfield, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(ufield, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(40, 40, 40)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
-                    .addComponent(telpfield1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(category, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(40, 40, 40)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
-                    .addComponent(telpfield2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(telp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(34, 34, 34)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
@@ -287,7 +289,7 @@ public class formdatapengunjung extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(mainpanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1010, Short.MAX_VALUE)
+                .addComponent(mainpanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
@@ -300,7 +302,7 @@ public class formdatapengunjung extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_namafieldActionPerformed
 
-    private void telpfieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_telpfieldKeyTyped
+    private void ufieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ufieldKeyTyped
         
         // agar inputan hanya number
         char enter = evt.getKeyChar();
@@ -308,7 +310,7 @@ public class formdatapengunjung extends javax.swing.JPanel {
             evt.consume();
         }
         // agar inputan hanya number
-    }//GEN-LAST:event_telpfieldKeyTyped
+    }//GEN-LAST:event_ufieldKeyTyped
 
     private void alamatfieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_alamatfieldFocusGained
         // TODO add your handling code here:
@@ -329,17 +331,21 @@ public class formdatapengunjung extends javax.swing.JPanel {
 
     private void simpanbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simpanbtnActionPerformed
         // TODO add your handling code here:
-        String sql = "insert into datapengunjung values ("+null+",?,?,?)";
+        String sql = "insert into datapengunjung values ("+null+",?,?,?,?,?,"+null+")";
         try {
-            if (namafield.getText().equals("") || alamatfield.getText().equals("") || telpfield.getText().equals("")) {
+            if (namafield.getText().equals("") || ufield.getText().equals("") || category.getText().equals("") 
+                    || alamatfield.getText().equals("") || telp.getText().equals("")) {
                 
             JOptionPane.showMessageDialog(null, "lengkapi form!");
                 
             } else {
             PreparedStatement stat = conn.prepareStatement(sql);
             stat.setString(1, namafield.getText());
-            stat.setString(2, alamatfield.getText());
-            stat.setString(3, telpfield.getText());
+            stat.setString(2, ufield.getText());
+            stat.setString(3, category.getText());
+            stat.setString(4, alamatfield.getText());
+            stat.setString(5, telp.getText());
+      
             
             
             stat.executeUpdate();
@@ -357,18 +363,19 @@ public class formdatapengunjung extends javax.swing.JPanel {
         kosong();
     }//GEN-LAST:event_clearbtnActionPerformed
 
-    private void telpfield1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_telpfield1KeyTyped
+    private void categoryKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_categoryKeyTyped
         // TODO add your handling code here:
-    }//GEN-LAST:event_telpfield1KeyTyped
+    }//GEN-LAST:event_categoryKeyTyped
 
-    private void telpfield2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_telpfield2KeyTyped
+    private void telpKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_telpKeyTyped
         // TODO add your handling code here:
-    }//GEN-LAST:event_telpfield2KeyTyped
+    }//GEN-LAST:event_telpKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private custom.CustomRoundedTextArea alamatfield;
     private custom.CustomRoundedButton backbtn;
+    private custom.CustomRoundedTextField category;
     private custom.CustomRoundedButton clearbtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -383,8 +390,7 @@ public class formdatapengunjung extends javax.swing.JPanel {
     private custom.CustomRoundedTextField namafield;
     private custom.RoundedPanel roundedPanel1;
     private custom.CustomRoundedButton simpanbtn;
-    private custom.CustomRoundedTextField telpfield;
-    private custom.CustomRoundedTextField telpfield1;
-    private custom.CustomRoundedTextField telpfield2;
+    private custom.CustomRoundedTextField telp;
+    private custom.CustomRoundedTextField ufield;
     // End of variables declaration//GEN-END:variables
 }
